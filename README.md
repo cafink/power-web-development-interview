@@ -15,7 +15,8 @@
     7.  [Deleting all application resources](#org98d913e)
 4.  [Running via the docker-desktop WSL2 distribution in Windows](#windows)
     1. [Line endings](#crlf)
-    2. [Using `binding.pry`](#pry)
+    2. [Detecting file changes](#file)
+    3. [Using `binding.pry`](#pry)
 
 
 <a id="orgb01f8d7"></a>
@@ -153,6 +154,13 @@ Destroys all docker resources for the application and services.
 ## Line endings
 
 The files in this repository contain Unix-style line endings (LF), and the Docker commands will fail if they are converted to Windows-style line endings (CRLF).  Be sure `core.autocrlf` is set to `false` in your Git configuration.  While `false` is this setting's default value, it is generally recommended to be set to `true` in Windows environments.
+
+
+<a id="file"></a>
+
+## Detecting file changes
+
+Rails seems to detect files changes to controllers, but not views.  This can be fixed by setting `config.file_watcher = ActiveSupport::FileUpdateChecker` in the configuration file.  The [documentation](https://apidock.com/rails/ActiveSupport/EventedFileUpdateChecker) for the default watcher, `EventedFileUpdateChecker`, says that it "does not hit disk when checking for updates. Instead, it uses platform-specific file system events to trigger a change in state."  Presumably, these events do not function correctly when running a Linux environment in Windows under WSL.
 
 
 <a id="pry"></a>
