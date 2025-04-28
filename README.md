@@ -13,10 +13,11 @@
     5.  [Starting the application and its services](#org24b7325)
     6.  [Stopping the application and its services](#org74964ba)
     7.  [Deleting all application resources](#org98d913e)
-4.  [Running via the docker-desktop WSL2 distribution in Windows](#windows)
-    1. [Line endings](#crlf)
-    2. [Detecting file changes](#file)
-    3. [Using `binding.pry`](#pry)
+4.  [Running via Docker & WSL in Windows](#windows)
+    1. [Shell scripts](#shell-scripts)
+    2. [Line endings](#crlf)
+    3. [Detecting file changes](#file)
+    4. [Using `binding.pry`](#pry)
 
 
 <a id="orgb01f8d7"></a>
@@ -146,7 +147,14 @@ Destroys all docker resources for the application and services.
 
 <a id="windows"></a>
 
-# Running via the docker-desktop WSL2 distribution in Windows
+# Running via Docker & WSL in Windows
+
+
+<a id="shell-scripts"></a>
+
+## Shell scripts
+
+Linux shell scripts don't run natively in Windows.  For the scripts that are intended to run on the host system, PowerShell alternatives are provided.
 
 
 <a id="crlf"></a>
