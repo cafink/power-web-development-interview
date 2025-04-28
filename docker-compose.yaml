@@ -16,6 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD: power-interview
   web:
     tty: true
+    stdin_open: true
     build: .
     command: bash -lc "bin/rails server -b 0.0.0.0"
     links:

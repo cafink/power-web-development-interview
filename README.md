@@ -15,6 +15,7 @@
     7.  [Deleting all application resources](#org98d913e)
 4.  [Running via the docker-desktop WSL2 distribution in Windows](#windows)
     1. [Line endings](#crlf)
+    2. [Using `binding.pry`](#pry)
 
 
 <a id="orgb01f8d7"></a>
@@ -152,3 +153,12 @@ Destroys all docker resources for the application and services.
 ## Line endings
 
 The files in this repository contain Unix-style line endings (LF), and the Docker commands will fail if they are converted to Windows-style line endings (CRLF).  Be sure `core.autocrlf` is set to `false` in your Git configuration.  While `false` is this setting's default value, it is generally recommended to be set to `true` in Windows environments.
+
+
+<a id="pry"></a>
+
+## Using `binding.pry`
+
+`binding.pry` will not work correctly when running the the app via `docker compose up web`.  Instead, bring the container up in a detached state via `docker compose up -d web`, then attach to it using `docker attach $(docker compose ps -q web)`.  This also requires `stdin_open: true` in the docker-compose.yaml file.  Alternatively, use `run` instead of `up`: `docker compose run --service-ports web` (this does not seem to require `stdin_open` to be set).
+
+(both approaches suggested in response to [this Stack Overflow question](https://stackoverflow.com/questions/35211638/how-to-debug-a-rails-app-in-docker-with-pry))
