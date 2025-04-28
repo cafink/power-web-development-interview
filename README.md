@@ -13,7 +13,8 @@
     5.  [Starting the application and its services](#org24b7325)
     6.  [Stopping the application and its services](#org74964ba)
     7.  [Deleting all application resources](#org98d913e)
-
+4.  [Running via the docker-desktop WSL2 distribution in Windows](#windows)
+    1. [Line endings](#crlf)
 
 
 <a id="orgb01f8d7"></a>
@@ -139,3 +140,15 @@ Stop the web application container and its supporting services - RDBMS, etc.
     bin/cleanup
 
 Destroys all docker resources for the application and services.
+
+
+<a id="windows"></a>
+
+# Running via the docker-desktop WSL2 distribution in Windows
+
+
+<a id="crlf"></a>
+
+## Line endings
+
+The files in this repository contain Unix-style line endings (LF), and the Docker commands will fail if they are converted to Windows-style line endings (CRLF).  Be sure `core.autocrlf` is set to `false` in your Git configuration.  While `false` is this setting's default value, it is generally recommended to be set to `true` in Windows environments.
