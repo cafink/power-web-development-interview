@@ -1,1 +1,1 @@
-docker compose up web
+docker compose run --service-ports web
