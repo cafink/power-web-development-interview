@@ -1,0 +1,1 @@
+docker exec -it $(docker compose ps -q db) bash -lc "mysql -u root -p power-web-development-interview_development"
